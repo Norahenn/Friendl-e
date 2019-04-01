@@ -7,9 +7,10 @@ import {
   Text,
   TouchableOpacity,
   View,
+  Button,
+  AsyncStorage,
 } from 'react-native';
 import { WebBrowser } from 'expo';
-
 import { MonoText } from '../components/StyledText';
 
 export default class HomeScreen extends React.Component {
@@ -32,6 +33,7 @@ export default class HomeScreen extends React.Component {
             />
           </View>
 
+          <Button title="Sign me out" onPress={this._signOutAsync}/>
           <View style={styles.getStartedContainer}>
             {this._maybeRenderDevelopmentModeWarning()}
 
@@ -95,6 +97,11 @@ export default class HomeScreen extends React.Component {
     WebBrowser.openBrowserAsync(
       'https://docs.expo.io/versions/latest/guides/up-and-running.html#can-t-see-your-changes'
     );
+  };
+
+  _signOutAsync = async () => {
+    await AsyncStorage.clear();
+    this.props.navigation.navigate('Auth');
   };
 }
 

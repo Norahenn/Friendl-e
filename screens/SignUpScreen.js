@@ -3,20 +3,18 @@ import {
   AsyncStorage,
   View,
   TouchableOpacity,
+  Text,
   StyleSheet,
-  Text
 } from 'react-native';
 import Input from '../components/InputFriendle';
 import Button from '../components/ButtonFriendle';
 import Avatar from '../components/AvatarFriendle';
 
 export default class SignInScreen extends React.Component {
-  // static navigationOptions = {
-  //   title: 'Sign In',
-  // };
   static navigationOptions = {
-    header: null,
+    title: 'Sign Up',
   };
+
   render() {
     return (
       <View style={[styles.flexCenter, styles.flexOne]}>
@@ -25,10 +23,11 @@ export default class SignInScreen extends React.Component {
           <Avatar></Avatar>
           <Input width="100" kbType="email-address" placeholder="Email"/>
           <Input placeholder="Password" isSecret={true}/>
-          <Button title="Sign in" pressMethod={this._signInAsync.bind(this)} style={styles.paddingTwo} />
-          <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignUp')}>
+          <Input placeholder="Confirm Password" isSecret={true}/>
+          <Button title="Sign up" pressMethod={this._signInAsync.bind(this)} style={styles.paddingTwo} />
+          <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignIn')}>
             <Text style={styles.blueText}>
-              Not a user yet?
+              I already have an account
             </Text>
           </TouchableOpacity>
         </View>

@@ -1,0 +1,52 @@
+import React from 'react';
+import {
+  TextInput,
+  View,
+  StyleSheet,
+} from 'react-native';
+
+export default class SignInScreen extends React.Component {
+  render() {
+    // Make it possible to set the size of the input through a prop
+    // PROPS LIST
+    /*
+    placeholder
+    kbType
+    isSecret
+    */
+   let isSecret = 
+    this.props.isSecret !== undefined
+      ? this.props.isSecret
+      : false
+
+    return (
+      <View style={[styles.container, styles.paddingTen]}>
+        <TextInput 
+          style={[styles.bgWhite, styles.paddingFive]} 
+          placeholder={this.props.placeholder}
+          keyboardType={this.props.kbType}
+          onPress={this.props.pressMethod}
+          secureTextEntry={isSecret}
+        />
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  bgWhite: {
+    backgroundColor: "#fff",
+    borderRadius: 2
+  },
+  container: {
+    width: 250,
+  },
+  paddingTen: {
+    padding: 10
+  },
+  paddingFive: {
+    padding: 2
+  }
+});
+  
+  
