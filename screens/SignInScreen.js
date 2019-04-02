@@ -9,6 +9,7 @@ import {
 import Input from '../components/InputFriendle';
 import Button from '../components/ButtonFriendle';
 import Avatar from '../components/AvatarFriendle';
+import Waves from '../components/Waves';
 
 export default class SignInScreen extends React.Component {
   // static navigationOptions = {
@@ -21,6 +22,7 @@ export default class SignInScreen extends React.Component {
     return (
       <View style={[styles.flexCenter, styles.flexOne]}>
 
+        <Waves wavesHeight="90%"></Waves>
         <View style={[styles.container, styles.flexCenter]}>
           <Avatar></Avatar>
           <Input width="100" kbType="email-address" placeholder="Email"/>
@@ -39,7 +41,7 @@ export default class SignInScreen extends React.Component {
 
   _signInAsync = async () => {
     await AsyncStorage.setItem('userToken', 'abc');
-    this.props.navigation.navigate('App');
+    this.props.navigation.navigate('Bridge');
   };
 }
 const styles = StyleSheet.create({

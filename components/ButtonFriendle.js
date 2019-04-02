@@ -8,17 +8,13 @@ TouchableOpacity,
 
 export default class SignInScreen extends React.Component {
   render() {
-      // PROPS LIST
-      /*
-      placeholder
-      kbType
-      isSecret
-      */
+    let pressMethod = this.props.pressMethod;
+
     return (
       <View style={[styles.container, styles.paddingTen]}>
         <TouchableOpacity
           style={[styles.bg, styles.paddingTen, styles.rounded]}
-          onPress={this.props.pressMethod}
+          onPress={pressMethod}
         >
             <Text style={styles.whiteTxt}>{this.props.title}</Text>
         </TouchableOpacity>
