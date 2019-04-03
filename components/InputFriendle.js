@@ -14,13 +14,19 @@ export default class SignInScreen extends React.Component {
     kbType
     isSecret
     */
+   let widthValue = this.props.widthInput;
+   let widthInput = function(widthValue){
+     return {
+       width: widthValue
+     }
+   }
    let isSecret = 
     this.props.isSecret !== undefined
       ? this.props.isSecret
       : false
 
     return (
-      <View style={[styles.container, styles.paddingTen]}>
+      <View style={[widthInput(widthValue), styles.paddingTen]}>
         <TextInput 
           style={[styles.bgWhite, styles.paddingFive]} 
           placeholder={this.props.placeholder}

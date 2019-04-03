@@ -55,7 +55,7 @@ export default class HomeScreen extends React.Component {
     this.props.navigation.navigate('SignUp');
   };
   _toAccountScreen = async () => {
-    this.props.navigation.navigate('SignIn');
+    this.props.navigation.navigate('Account');
   };
 }
 

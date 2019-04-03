@@ -25,8 +25,8 @@ export default class SignInScreen extends React.Component {
         <Waves wavesHeight="90%"></Waves>
         <View style={[styles.container, styles.flexCenter]}>
           <Avatar></Avatar>
-          <Input width="100" kbType="email-address" placeholder="Email"/>
-          <Input placeholder="Password" isSecret={true}/>
+          <Input widthInput={250} kbType="email-address" placeholder="Email"/>
+          <Input widthInput={250} placeholder="Password" isSecret={true}/>
           <Button title="Sign in" pressMethod={this._signInAsync.bind(this)} style={styles.paddingTwo} />
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignUp')}>
             <Text style={styles.blueText}>
