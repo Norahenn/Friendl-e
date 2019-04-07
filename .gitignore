@@ -1,2 +1,4 @@
 /Front-end/node_modules
 /Front-end/package-lock.json
+/Back-end/venv
+/.vscode
