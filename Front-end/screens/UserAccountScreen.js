@@ -2,7 +2,7 @@ import React from 'react';
 import {
   AsyncStorage,
   View,
-  TouchableOpacity,
+  // TouchableOpacity,
   Text,
   StyleSheet,
   Image,
@@ -19,11 +19,23 @@ export default class SignInScreen extends React.Component {
 
   render() {
     return (
-      <KeyboardAvoidingView style={[styles.flexCenter, styles.flexOne]} behavior="padding" enabled>
+      <KeyboardAvoidingView 
+        style={[styles.flexCenter, styles.flexOne]}
+        // TODO: Make it so that there's no visual change of the waves on input pressed
+        behavior="padding"
+        enabled
+        // TODO: Try it on ios to chechk if I need to adjust the value
+        keyboardVerticalOffset={80}
+        >
+
+        {/* TODO: Change the png so that the top part is white and not transparent */}
+        {/* TODO: Add edit/send/done icons next to the inputs */}
+        {/* TODO: Add the next page touchable */}
         <Waves wavesHeight="1%"></Waves>
         <ScrollView style={{width:'100%'}}>
           
-          <Image style={{marginLeft: '60%', marginTop: '15%'}} source={require("../assets/images/avatar.png")}/>
+          <Image style={{marginLeft: '70%', marginTop: '15%'}} source={require("../assets/images/avatar.png")}/>
+
           <View style={[styles.container, styles.flexCenter]}>
             
             <Text style={styles.inputTitle}>Email</Text>
@@ -55,9 +67,13 @@ const styles = StyleSheet.create({
     color: "#94A5B1"
   },
   container: {
-    width: 275,
+    width: "100%",
     // height: 400,
     borderRadius: 6,
+    // marginLeft: '20vw'
+    paddingLeft: 5,
+    paddingRight: 5,
+    // paddingTop: 15
     // backgroundColor: "#94A5B1"
   },
   flexCenter: {
@@ -68,15 +84,12 @@ const styles = StyleSheet.create({
   flexOne: {
     flex: 1
   },
-  paddingTwo: {
-    padding: 5,
-    backgroundColor: "#000"
-  },
   inputTitle: {
     color: "#94A5B1",
     // jusstifySelf: 
     // textAlign: 'left',
-    // width: 290,
-    paddingTop: 10
+    width: '93%',
+    paddingTop: 13,
+    fontSize: 17
   }
 });

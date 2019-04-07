@@ -1,7 +1,6 @@
 // import React from 'react';
 import { createAppContainer, createStackNavigator, createSwitchNavigator } from 'react-navigation';
 import SignInScreen from '../screens/SignInScreen';
-import HomeScreen from '../screens/HomeScreen';
 import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import BridgeScreen from '../screens/BridgeScreen';
@@ -12,7 +11,7 @@ import UserAccountScreen from '../screens/UserAccountScreen';
 
 const BridgeStack = createStackNavigator({Bridge: BridgeScreen});
 const AuthStack = createStackNavigator({ SignIn: SignInScreen, SignUp: SignUpScreen});
-const DataStack = createStackNavigator({Account: UserAccountScreen})
+const DataStack = createStackNavigator({Bridge: BridgeScreen, Account: UserAccountScreen})
 
 export default createAppContainer(createSwitchNavigator(
   // You could add another route here for authentication.
