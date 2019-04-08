@@ -14,6 +14,7 @@ const BridgeStack = createStackNavigator({Bridge: BridgeScreen});
 const AuthStack = createStackNavigator({SignIn: SignInScreen, SignUp: SignUpScreen});
 const DataStack = createStackNavigator({Bridge: BridgeScreen, Account: UserAccountScreen})
 const ChatStack = createStackNavigator({Bridge: BridgeScreen, ChatLog: ChatScreen});
+const CurrentlyWorkingOn = createStackNavigator({Chat: ChatScreen});
 
 export default createAppContainer(createSwitchNavigator(
   // You could add another route here for authentication.
@@ -23,11 +24,12 @@ export default createAppContainer(createSwitchNavigator(
     Bridge: BridgeStack,
     Auth: AuthStack,
     Data: DataStack,
-    Chat: ChatStack
+    Chat: ChatStack,
+    Current: CurrentlyWorkingOn
 
   },
   {
-    initialRouteName: 'AuthLoading',
+    initialRouteName: 'Current',
     // Main: MainTabNavigator
   }
 ));

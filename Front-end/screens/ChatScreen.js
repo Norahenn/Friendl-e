@@ -7,20 +7,71 @@ import {
   StyleSheet,
   Image,
   KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  TextInput
 } from 'react-native';
-import Input from '../components/InputFriendle';
-import Waves from '../components/Waves';
+// import Waves from '../components/Waves';
+import Message from '../components/MessageFriendle';
 
 export default class SignInScreen extends React.Component {
   static navigationOptions = {
     title: 'Fiddle',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      testChildToParentValue: 'parentValue',
+      chatLog: [
+        [
+          {Fiddle: "Hi"},
+          {User: "Hi Fiddle"},
+          {User: "How are you?"},
+          {Fiddle: "Fine. And you, JOHNSON?"}
+        ]
+        ,
+        [
+          {Fiddle: "This is another day"},
+          {User: "Indeed Fiddle"},
+        ],
+        [
+          {Fiddle: "Once Again, this is another one"},
+          {User: "OYEAH"},
+        ],
+        [
+          {Fiddle: "Hi"},
+          {User: "Hi Fiddle"},
+          {User: "How are you?"},
+          {Fiddle: "Fine. And you, JOHNSON?"}
+        ],
+        [
+          {User:"Placeat dolorum ut provident et. Cupiditate sunt velit velit ratione voluptas. Labore necessitatibus non rerum eum reiciendis omnis ut. Ratione explicabo et asperiores. Et minima dignissimos. Incidunt quasi maiores qui quisquam tenetur sit."}
+        ]
+      ]
+    }
+  };
+    // this.setState(input => (
+    // ))
+    
+  // };
+
+
+  // Visually retunrs nothing
+  generateMessagesLog = (dailyLog) => {
+    dailyLog.map((message, index) => {
+      return <Text key={index}>{message[Object.keys(message)[0]]}</Text>;;
+    })
+  };
+
+  // To test Child to Parent data
+  // ParentValueMethod = (newValue) => {
+  //   this.setState({testChildToParentValue: newValue})
+  // };
+  
   render() {
     return (
       <KeyboardAvoidingView 
-        style={[styles.flexCenter, styles.flexOne]}
+        style={[styles.flexCenter, styles.flexOne, {backgroundColor:'#DFE9EE'}]}
         // TODO: Make it so that there's no visual change of the waves on input pressed
         behavior="padding"
         enabled
@@ -28,29 +79,32 @@ export default class SignInScreen extends React.Component {
         keyboardVerticalOffset={80}
         >
 
-        {/* TODO: Change the png so that the top part is white and not transparent */}
-        {/* TODO: Add edit/send/done icons next to the inputs */}
-        {/* TODO: Add the next page touchable */}
-        <Waves wavesHeight="1%"></Waves>
-        <ScrollView style={{width:'100%'}}>
-          
-          <Image style={{marginLeft: '70%', marginTop: '15%'}} source={require("../assets/images/avatar.png")}/>
+        {/* <Waves wavesHeight="0%"></Waves> */}
+        {/* To test Child to Parent data */}
+        {/* <Text>{this.state.testChildToParentValue}</Text> */}
 
-          <View style={[styles.container, styles.flexCenter]}>
-            
-            <Text style={styles.inputTitle}>Email</Text>
-            <Input widthInput={'100%'} kbType="email-address" placeholder="Email"/>
+        <ScrollView style={[styles.container, styles.flexCenter]}>
+          {/* {this.generateMessagesLog(this.state.chatLog)} */}
+          {
+            this.state.chatLog.map((prop, key) => {
+              
+              return <View key={key}>
+                {
+                  // Using the function won't return anything, but the map function will, wtf?
+                  // this.generateMessagesLog(prop);
 
-            <Text style={styles.inputTitle}>Username</Text>
-            <Input widthInput={'100%'} placeholder="Username"/>
-
-            <Text style={styles.inputTitle}>Previous Password</Text>
-            <Input widthInput={'100%'} placeholder="Previous Password" isSecret={true}/>
-
-            <Text style={styles.inputTitle}>New Password</Text>
-            <Input widthInput={'100%'} placeholder="New Password" isSecret={true}/>
-
-          </View>
+                  // Prepare a custom component instaed of the basic Text one, it was just to check the conditional rendering
+                  prop.map((message, index) => {
+                  if(Object.keys(message)[0] == 'User'){
+                    return <Message key={index} content={message[Object.keys(message)[0]]} from={Object.keys(message)[0]} />;
+                  } else if(Object.keys(message)[0] == 'Fiddle'){
+                    return <Message key={index} content={message[Object.keys(message)[0]]} from={Object.keys(message)[0]} />;
+                  }
+                })
+                }
+              </View>;;
+            })
+          }
         </ScrollView>
 
       </KeyboardAvoidingView>
@@ -78,8 +132,8 @@ const styles = StyleSheet.create({
   },
   flexCenter: {
     // flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    // justifyContent: 'center',
+    // alignItems: 'center',
   },
   flexOne: {
     flex: 1
