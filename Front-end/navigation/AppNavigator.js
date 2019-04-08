@@ -5,13 +5,15 @@ import AuthLoadingScreen from '../screens/AuthLoadingScreen';
 import SignUpScreen from '../screens/SignUpScreen';
 import BridgeScreen from '../screens/BridgeScreen';
 import UserAccountScreen from '../screens/UserAccountScreen';
+import ChatScreen from '../screens/ChatScreen';
 
 // Implementation of all the screens declared in ./MainTabNavigator
 // import MainTabNavigator from './MainTabNavigator';
 
 const BridgeStack = createStackNavigator({Bridge: BridgeScreen});
-const AuthStack = createStackNavigator({ SignIn: SignInScreen, SignUp: SignUpScreen});
+const AuthStack = createStackNavigator({SignIn: SignInScreen, SignUp: SignUpScreen});
 const DataStack = createStackNavigator({Bridge: BridgeScreen, Account: UserAccountScreen})
+const ChatStack = createStackNavigator({Bridge: BridgeScreen, ChatLog: ChatScreen});
 
 export default createAppContainer(createSwitchNavigator(
   // You could add another route here for authentication.
@@ -20,7 +22,8 @@ export default createAppContainer(createSwitchNavigator(
     AuthLoading: AuthLoadingScreen,
     Bridge: BridgeStack,
     Auth: AuthStack,
-    Data: DataStack
+    Data: DataStack,
+    Chat: ChatStack
 
   },
   {

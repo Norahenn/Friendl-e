@@ -18,7 +18,7 @@ export default class HomeScreen extends React.Component {
     header: null,
   };
 
-  render() {  
+  render() {
     return (
       <View style={styles.container}>
         <Waves wavesHeight="40%"></Waves>
@@ -49,7 +49,7 @@ export default class HomeScreen extends React.Component {
   };
   // To refactore
   _toChatScreen = async () => {
-    this.props.navigation.navigate('SignIn');
+    this.props.navigation.navigate('ChatLog');
   };
   _toTrackScreen = async () => {
     this.props.navigation.navigate('SignUp');
