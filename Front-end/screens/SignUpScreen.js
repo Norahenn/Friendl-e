@@ -29,7 +29,7 @@ export default class SignInScreen extends React.Component {
           <Button title="Sign up" pressMethod={this._signInAsync.bind(this)} style={styles.paddingTwo} />
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignIn')}>
             <Text style={styles.blueText}>
-              I already have an account
+              Sign in
             </Text>
           </TouchableOpacity>
         </View>
@@ -49,12 +49,11 @@ const styles = StyleSheet.create({
   },
   container: {
     width: 275,
-    height: 400,
+    height: 425,
     borderRadius: 6,
     backgroundColor: '#DFE9EE',
   },
   flexCenter: {
-    // flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },

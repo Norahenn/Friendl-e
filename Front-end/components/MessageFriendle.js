@@ -38,20 +38,29 @@ export default class SignInScreen extends React.Component {
         elevation: 4,
       },
       containerUser: {
-        borderRadius: 5,
+        borderRadius: 12,
         borderBottomRightRadius: 0,
+        
       },
       containerFiddle: {
-        borderRadius: 5,
+        borderRadius: 12,
         borderBottomLeftRadius: 0,
+        backgroundColor: '#ADADAD'
       },
       User: {
         flexDirection: 'row',
-        justifyContent: 'flex-end'
+        justifyContent: 'flex-end',
+        
       },
       Fiddle: {
         flexDirection: 'row',
         justifyContent: 'flex-start'
+      },
+      textUser: {
+        color: '#6c6c6c'
+      },
+      textFiddle: {
+        color: '#fff',
       }
     });
       
@@ -59,7 +68,7 @@ export default class SignInScreen extends React.Component {
     return (
       <View style={[sender == 'User' ? styles.User : styles.Fiddle]}>
         <View style={[styles.container, sender == 'User' ? styles.containerUser : styles.containerFiddle, {alignSelf: 'flex-start'}]}>
-          <Text style={[{color: '#6c6c6c', lineHeight: 25, fontSize: 17}]}>{message}</Text>
+          <Text style={[{lineHeight: 25, fontSize: 17}, sender == 'User' ? styles.textUser : styles.textFiddle]}>{message}</Text>
         </View>
       </View>
     );

@@ -30,7 +30,7 @@ export default class SignInScreen extends React.Component {
           <Button title="Sign in" pressMethod={this._signInAsync.bind(this)} style={styles.paddingTwo} />
           <TouchableOpacity onPress={()=>this.props.navigation.navigate('SignUp')}>
             <Text style={styles.blueText}>
-              Not a user yet?
+              Sign up
             </Text>
           </TouchableOpacity>
         </View>
