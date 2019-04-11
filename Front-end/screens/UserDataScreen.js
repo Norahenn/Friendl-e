@@ -2,12 +2,10 @@ import React from 'react';
 import {
   AsyncStorage,
   View,
-  // TouchableOpacity,
-  Text,
+  TouchableOpacity,
   StyleSheet,
-  Image,
-  KeyboardAvoidingView,
-  ScrollView
+  ScrollView,
+  Image
 } from 'react-native';
 import UserDataContainer from '../components/UserDataContainerFriendle';
 // import Waves from '../components/Waves';
@@ -17,18 +15,45 @@ export default class SignInScreen extends React.Component {
     title: 'Personnal Data',
   };
 
+  constructor(props) {
+    super(props);
+    this.state = {
+      datas: [
+        {Hobbies: ['Biking', 'Cooking', 'Eating']},
+        {Goals: ['Biking']},
+        {Likes: ['Cooking','Biking', 'Cooking', 'Eating','Biking', 'Cooking', 'Eating']},
+        {Calms: ['Eating']},
+        {Frightens: ['Cooking', 'Eating']}
+      ]
+    };
+  };
+  
   render() {
     return (
-        
-        <ScrollView style={{width: '100%', backgroundColor: '#F3F6F7'}}>
-          {/* <Waves wavesHeight="1%"></Waves> */}
-
-          <View style={[styles.container, styles.flexCenter]}>
-            <UserDataContainer />
-
-          </View>
-
-        </ScrollView>
+        <View>
+          <TouchableOpacity style={[{}]} onPress={()=>{}}>
+            <Image source={require('../assets/images/png/PageButton.png')} 
+              style={[{width: '100%'}]}
+            />
+          </TouchableOpacity>
+          <ScrollView style={[{width: '100%', backgroundColor: '#F3F6F7'}, styles.scrollView]} showsVerticalScrollIndicator={false}>
+            {/* <Waves wavesHeight="1%"></Waves> */}
+  
+            <View style={[styles.container, styles.flexCenter]}>
+              {
+                this.state.datas.map((value, key) => {
+                  
+                  return <UserDataContainer
+                            key={key}
+                            content={this.state.datas[key][Object.keys(value)[0]]}
+                            title={Object.keys(value)[0]}
+                          />
+                })
+              }
+            </View>
+  
+          </ScrollView>
+        </View>
 
     );
   }
@@ -44,13 +69,11 @@ const styles = StyleSheet.create({
   },
   container: {
     width: "100%",
-    // height: 400,
-    borderRadius: 6,
-    // marginLeft: '20vw'
-    paddingLeft: 5,
-    paddingRight: 5,
-    // paddingTop: 15
-    // backgroundColor: "#94A5B1"
+    height: 200,
+    marginVertical: 400
+  },
+  scrollView: {
+    height: '100%',
   },
   flexCenter: {
     // flex: 1,

@@ -49,7 +49,7 @@ export default class SignInScreen extends React.Component {
         ]
       ],
       newMessage: ''
-    }
+    };
   };
 
   // Visually retunrs nothing
@@ -87,16 +87,16 @@ export default class SignInScreen extends React.Component {
         >
           {/* {this.generateMessagesLog(this.state.chatLog)} */}
           {
-            this.state.chatLog.map((prop, key) => {
+            this.state.chatLog.map((value, key) => {
               
               // This could be a component, 'would make the ChatScreen less crowded
               return <View key={key}>
                 {
                   // Using the function won't return anything, but the map function will, why?
-                  // this.generateMessagesLog(prop);
+                  // this.generateMessagesLog(value);
 
-                  prop.map((message, index) => {
-                    // TODO: add a new condition to pass a padding to component as prop
+                  value.map((message, index) => {
+                    // TODO: add a new condition to pass a padding to component as value
                   if(Object.keys(message)[0] == 'User'){
                     return <Message key={index} content={message[Object.keys(message)[0]]} from={Object.keys(message)[0]} />;
                   } else if(Object.keys(message)[0] == 'Fiddle'){
@@ -118,7 +118,8 @@ export default class SignInScreen extends React.Component {
               var chatLog = this.state.chatLog;
               console.log(chatLog);
               chatLog[this.state.chatLog.length-1].push({User : this.state.newMessage});
-              this.setState({chatLog})
+              this.setState({chatLog});
+              this.setState({newMessage: ''})
               // this.setState({ chatLog: [...this.state.myArray, 'new value'] })
               // this.state.chatLog[this.state.chatLog.length-1].push(this.state.newMessage)
             }}>

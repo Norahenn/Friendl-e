@@ -2,16 +2,15 @@ import React from 'react';
 import {
   View,
   StyleSheet,
-  ScrollView,
-  Text
-  // Text
+  Text,
+  TouchableOpacity
 } from 'react-native';
 
 export default class SignInScreen extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { 
-      inputValue : this.props.prefillValue,
+    this.state = {
+      isSelected: false
     };
   };
   
@@ -19,30 +18,43 @@ export default class SignInScreen extends React.Component {
     let title = this.props.title;
 
     return (
-      <View>
-          <Text>{title}</Text>
-          <View></View>
+      <View style={[{marginTop: 15, marginHorizontal: 25}]}>
+          <Text style={[{}, styles.title]}>{title}</Text>
+          <TouchableOpacity style={[{}, styles.squareContainer]} onPress={()=> this.setState({isSelected : !this.state.isSelected})}>
+            <View
+              style={[{},styles.square, this.state.isSelected? styles.filledSquare : styles.emptySquare]}
+              
+            />
+          </TouchableOpacity>
       </View>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  bgWhite: {
-    backgroundColor: "#fff",
-    borderRadius: 2
+  title: {
+    color: '#9CA5AB',
+    fontSize: 20
   },
-  paddingTen: {
-    padding: 10
+  squareContainer: {
+    flexDirection: 'row',
+    justifyContent: 'flex-end',
+    marginTop: 5,
+    paddingLeft: 5,
+    paddingVertical: 10
   },
-  paddingFive: {
-    padding: 2
+  square: {
+    width: 20,
+    height: 20,
+    borderRadius: 3,
+    borderWidth: 1,
+    borderColor: '#9CA5AB'
   },
-  container: {
-    backgroundColor: '#fff',
-    borderRadius: 10,
-    width: 300,
-    height: 125
+  emptySquare: {
+    backgroundColor: '#fff'
+  },
+  filledSquare: {
+    backgroundColor: '#9CA5AB'
   }
 });
   
